@@ -1,43 +1,29 @@
 import { Injectable } from '@nestjs/common';
-import { ProductsDto } from './products.dto';
+import { CreateProductDto } from './dto/create-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
+import {InjectRepository} from "@nestjs/typeorm"
+import {Repository} from "typeorm" 
+import { Products } from './entities/product.entity';
 @Injectable()
 export class ProductsService {
-  private _products: ProductsDto[] = [
-    // -------------------fake data --------------------------------------------
-    {
-      id: 1,
-      name: 'Banana whey portein powder',
-      categoryId: 1,
-    },
-    {
-      id: 2,
-      name: 'Vanilla whey portein powder',
-      categoryId: 1,
-    },
-    { id: 3, name: 'Chocolate whey portein powder', categoryId: 1 },
-    {
-      id: 4,
-      name: 'Bluebarry whey portein powder',
-      categoryId: 2,
-    },
-    {
-      id: 5,
-      name: 'Cheesecake whey portein powder',
-      categoryId: 2,
-    },
-  ];
-  //   ---------------------------------------------------------------------------
-
-  // ----------------------------- The functions of the service --------------------------------
-
-  getProductById(id: number): ProductsDto {
-    return this._products.find((product) => product.id === id);
+  constructor(@InjectRepository(Products) private productsRepo:Repository<Products>){}
+  create(createProductDto: CreateProductDto) {
+    return this.productsRepo.save(createProductDto)
   }
 
-  getProductByName(name: string): ProductsDto {
-    return this._products.find((product) => product.name === name);
+  findAll() {
+    return this.productsRepo.find();
   }
 
-  // This function will return all the items with category id you give it
-  getProductsByCategoryID() {}
+  findOne(id: number) {
+    return `This action returns a #${id} product`;
+  }
+
+  update(id: number, updateProductDto: UpdateProductDto) {
+    return `This action updates a #${id} product`;
+  }
+
+  remove(id: number) {
+    return `This action removes a #${id} product`;
+  }
 }
