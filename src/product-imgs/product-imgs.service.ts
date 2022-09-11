@@ -17,7 +17,7 @@ export class ProductImgsService {
   }
 
   async findOne(idNumber: number) {
-    const img = await this.productImgRepo.findOneBy({id:idNumber})
+    const img = await this.productImgRepo.findOneBy({product_id:idNumber})
     return img
   }
 
