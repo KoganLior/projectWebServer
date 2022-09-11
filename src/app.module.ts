@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { ProductImgsModule } from './product-imgs/product-imgs.module';
 import { ProductDetailsModule } from './product-details/product-details.module';
+import { CategoriesModule } from './categories/categories.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -18,7 +19,7 @@ import { ProductDetailsModule } from './product-details/product-details.module';
     database:'wheyup_database',
     entities:['dist/**/*.entity{.ts,.js}'],
     synchronize:false,
-  }), CartModule, UsersModule, ProductsModule, ProductImgsModule, ProductDetailsModule],
+  }), CartModule, UsersModule, ProductsModule, ProductImgsModule, ProductDetailsModule, CategoriesModule],
   controllers: [AppController],
   providers: [AppService],
 })
