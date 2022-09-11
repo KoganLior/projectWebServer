@@ -23,9 +23,7 @@ export class ProductsController {
   }
 
   @Get('/id/:id')
-  findOne(@Param('id',ParseIntPipe) id: number) {
-    console.log(id);
-    
+  findOne(@Param('id',ParseIntPipe) id: number) { 
     return this.productsService.findOne(id);
   }
 
