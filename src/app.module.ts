@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { CartModule } from './cart/cart.module';
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
+import { ProductImgsModule } from './product-imgs/product-imgs.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -16,7 +17,7 @@ import { ProductsModule } from './products/products.module';
     database:'wheyup_database',
     entities:['dist/**/*.entity{.ts,.js}'],
     synchronize:false,
-  }), CartModule, UsersModule, ProductsModule],
+  }), CartModule, UsersModule, ProductsModule, ProductImgsModule],
   controllers: [AppController],
   providers: [AppService],
 })

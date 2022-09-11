@@ -19,8 +19,6 @@ export class ProductsService {
 
   async findOne(idNumber: number) {
     const product = await this.productsRepo.findOneBy({ id: idNumber });
-    console.log(product);
-
     return product;
   }
 
